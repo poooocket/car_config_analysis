@@ -81,7 +81,7 @@ if filed:
     if value:
         if df[filed].dtype in ['int64', 'float64']:
             value = float(value)
-        clicked_rows = df[df[filed]==value]
+        clicked_rows = df[df[filed].astype(str) == str(value)]
         df_caption_holder.markdown(f":violet-badge[{filed}：{value}]")
       
         basic_cols_to_show = ["厂商", "车型", "年款", "配置名称", "官方指导价(万)"]
