@@ -3,10 +3,6 @@ streamlit-echarts
 numpy
 pandas
 requests
-bs4
+beautifulsoup4
 plotly
-os
-time
-re
-json
-sklearn
+scikit-learn
