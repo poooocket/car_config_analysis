@@ -1,6 +1,6 @@
 
 streamlit
-streamlit_echarts
+streamlit-echarts
 numpy
 pandas
 requests
