@@ -79,14 +79,24 @@ if filed:
         value = st_echarts(option, events=events, height="326px")
     
     if value:
-        if df[filed].dtype in ['int64', 'float64']:
-            value = float(value)
-        clicked_rows = df[df[filed]==value]
+        if df[filed].dtype in ['int64', 'float64', 'int32', 'float32']:
+            try:
+                numeric_value = float(value)
+                clicked_rows = df[df[filed] == numeric_value]
+                display_value = value
+            except ValueError:
+                clicked_rows = df[df[filed].astype(str).str.strip() == str(value).strip()]
+                display_value = value
+
+        else:
+            clicked_rows = df[df[filed].astype(str).str.strip() == str(value).strip()]
+            display_value = value
+            
         df_caption_holder.markdown(f":violet-badge[{filed}：{value}]")
-      
+
         basic_cols_to_show = ["厂商", "车型", "年款", "配置名称", "官方指导价(万)"]
         if filed in basic_cols_to_show:
-            cols_to_show = basic_cols_to_show
+            cols_to_show = list(dict.fromkeys(basic_cols_to_show + [filed]))
         else:
             cols_to_show = basic_cols_to_show + [filed]
         df_holder.dataframe(clicked_rows[cols_to_show], hide_index=True, use_container_width=True)
