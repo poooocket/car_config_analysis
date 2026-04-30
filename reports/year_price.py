@@ -1,4 +1,3 @@
-import plotly.express as px
 import streamlit as st
 from viz_utils import run_style, load_config
 import pandas as pd
