@@ -2,6 +2,7 @@ import streamlit as st
 
 data_overview = st.Page( "reports/data_overview.py", title="数据概览", icon=":material/dashboard:", default=True)
 data_explore = st.Page( "reports/data_explore.py", title="数据分布", icon=":material/search:")
+model_configuration = st.Page( "reports/model_configuration.py", title="车型配置", icon=":material/car_gear:")
 
 adas_chip = st.Page( "reports/adas_chip.py", title="辅助驾驶芯片", icon=":material/memory:")
 lidar = st.Page("reports/lidar.py", title="激光雷达", icon=":material/sensors:")
@@ -17,7 +18,7 @@ visual_recognition = st.Page("reports/visual_recognition.py", title="车内视�
 
 pg = st.navigation(
     {
-        "数据概览":[data_overview, data_explore],
+        "数据概览":[data_overview, data_explore, model_configuration],
         "智驾域": [adas_chip, lidar, adas_package, adas_price],
         "座舱域": [hmi_chip, hmi_screen, voice_interaction, visual_recognition],
     }
